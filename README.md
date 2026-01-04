@@ -1,55 +1,137 @@
 # Subscription Billing & Invoicing System
 
-An enterprise-grade backend system for managing subscriptions, recurring billing,
-invoice generation, and payment processing.
+An enterprise-grade **Subscription Billing & Invoicing System** designed to demonstrate backend engineering skills expected by product and SaaS companies, particularly in **Japan**.
 
-This project is designed to demonstrate real-world backend engineering skills,
-including domain-driven design, financial correctness, background processing,
-and test discipline.
+This project focuses on **correctness, reliability, and system design**, not just CRUD APIs.
 
 ---
 
-## Features
+## 🚀 Key Features
 
-- Subscription lifecycle management
-- Plan-based recurring billing
-- Immutable invoice generation
-- Payment processing (mock gateway)
-- Automatic retries for failed payments
-- Audit logging for all critical operations
-- Background billing jobs using Celery
-- Fully tested (unit, integration, end-to-end)
-
----
-
-## Tech Stack
-
-- Python 3.11
-- FastAPI
-- PostgreSQL
-- SQLAlchemy + Alembic
-- Celery + Redis
-- Pytest
-- Docker & Docker Compose
+- Subscription lifecycle management (trial, active, past-due, cancelled)
+- Recurring billing with background workers
+- Invoice generation (immutable financial records)
+- Mock payment gateway with success/failure simulation
+- Retry handling for failed payments
+- Audit logging for all critical actions
+- Clean Domain-Driven Design (DDD) architecture
+- Full test pyramid: unit, integration, and E2E tests
+- Dockerized setup (API, worker, DB, Redis)
 
 ---
 
-## Architecture Overview
+## 🏗️ Architecture Overview
 
-- `domain/` – Pure business logic and entities
-- `services/` – Use case orchestration
-- `api/` – HTTP layer (FastAPI)
-- `tasks/` – Background billing jobs
-- `utils/` – Shared helpers
-- `tests/` – Full test pyramid
+```
+API (FastAPI)
+  ↓
+Service Layer
+  ↓
+Domain Layer (Pure business logic)
+  ↓
+PostgreSQL
+```
 
-This separation ensures correctness, maintainability, and scalability.
+Background jobs are handled using **Celery + Redis**.
 
 ---
 
-## Setup Instructions
+## 🧠 Why This Project Matters
 
-### 1. Clone repository
+This system models **real-world billing behavior**, including:
+
+- State machines for subscriptions
+- Idempotent billing jobs
+- Immutable invoices for audit safety
+- Separation of business logic from transport layers
+
+These are key qualities evaluated in backend interviews.
+
+---
+
+## ⚙️ Tech Stack
+
+- Backend: FastAPI (Python)
+- Database: PostgreSQL
+- ORM: SQLAlchemy + Alembic
+- Background Jobs: Celery
+- Cache/Broker: Redis
+- Testing: Pytest
+- Deployment: Docker & Docker Compose
+
+---
+
+## ▶️ How to Run
+
+### 1. Setup environment
+
 ```bash
-git clone <repository-url>
-cd subscription-billing-system
+cp .env.example .env
+```
+
+### 2. Start services
+
+```bash
+make up
+```
+
+### 3. Run migrations
+
+```bash
+make migrate
+```
+
+### 4. Seed initial data
+
+```bash
+make seed
+```
+
+### 5. Create admin user
+
+```bash
+make admin
+```
+
+### 6. Access API docs
+
+Open: http://localhost:8000/docs
+
+---
+
+## 🧪 Running Tests
+
+```bash
+make test
+```
+
+---
+
+## 📂 Project Structure
+
+```
+app/
+ ├── api/        # HTTP layer
+ ├── core/       # Configuration, DB, logging
+ ├── domain/     # Business logic
+ ├── services/   # Use-case orchestration
+ ├── tasks/      # Background jobs
+ ├── utils/      # Helpers
+ └── exceptions/ # Custom errors
+```
+
+---
+
+## 💼 Interview Talking Points
+
+- Why invoices are immutable
+- How idempotency prevents double billing
+- Why state machines are used for subscriptions
+- Handling payment failures safely
+- Importance of audit logs in financial systems
+
+---
+
+## 📌 Author
+
+Built as a **portfolio-quality backend system** to demonstrate production-ready engineering skills.
