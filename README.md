@@ -1,5 +1,7 @@
 # Subscription Billing & Invoicing System
 
+👉 日本語版はこちら → [README_JP.md](README_JP.md)
+
 An enterprise-grade **Subscription Billing & Invoicing System** designed to demonstrate backend engineering skills expected by product and SaaS companies, particularly in **Japan**.
 
 This project focuses on **correctness, reliability, and system design**, not just CRUD APIs.
