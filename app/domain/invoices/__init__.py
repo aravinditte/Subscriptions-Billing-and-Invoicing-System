@@ -1,0 +1,3 @@
+"""
+Invoice domain package.
+"""

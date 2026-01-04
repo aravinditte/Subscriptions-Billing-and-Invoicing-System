@@ -1,0 +1,3 @@
+"""
+Subscription plan domain package.
+"""

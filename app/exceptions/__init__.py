@@ -1,0 +1,3 @@
+"""
+Custom application exceptions.
+"""
